@@ -1,0 +1,324 @@
+* {
+  box-sizing: border-box;
+  transition: all ease 0.2s;
+}
+
+body {
+  font-family: "Source Sans Pro", sans-serif;
+}
+
+.app {
+  display: flex;
+}
+
+.sidebar {
+  flex-shrink: 0;
+  width: 336px;
+  background-color: #29313d;
+  color: #6c9cad;
+  padding-top: 110px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100vh;
+  position: sticky;
+  top: 0;
+}
+
+.sidebar .titulo {
+  font-family: "Dancing Script", cursive;
+  font-size: 54px;
+  font-weight: bold;
+  letter-spacing: 2px;
+  text-align: center;
+  flex-shrink: 0;
+}
+
+.sidebar ul.receitas {
+  height: 100%;
+  padding: 20px;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.sidebar ul.receitas li {
+  padding: 20px;
+  background-color: rgba(255, 255, 255, 0.08);
+  border-radius: 5px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+
+.sidebar ul.receitas li:not(:last-child) {
+  margin-bottom: 5px;
+}
+
+.sidebar ul.receitas li:hover {
+  background-color: #ffffff1f;
+}
+
+.sidebar ul.receitas li ion-icon {
+  color: #bbb;
+  margin-right: 5px;
+}
+
+.botao.fechar {
+  background-color: #29313D;
+  color: #fff;
+  border-radius: 100px;
+  height: 60px;
+  width: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  top: 30px;
+  right: 50px;
+  font-size: 25px;
+}
+
+.botao.fechar:hover {
+  background-color: #29313DBB;
+  cursor: pointer;
+}
+
+.botao.adicionar {
+  background-color: rgba(64, 161, 119, 0.9);
+  color: #fff;
+  border-radius: 100px;
+  height: 60px;
+  width: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  bottom: 50px;
+  right: 50px;
+  font-size: 25px;
+}
+
+.botao.adicionar:hover {
+  background-color: rgba(64, 161, 119, 0.8);
+  cursor: pointer;
+}
+
+.view .navbar .botao.excluir {
+  background-color: rgba(255, 0, 0, 0.8);
+  color: #fff;
+}
+
+.view .navbar .botao.excluir:hover {
+  background-color: rgba(255, 0, 0, 0.7);
+}
+
+.view .navbar .botao.editar {
+  background-color: #29313dcc;
+  color: #fff;
+}
+
+.view .navbar .botao.editar:hover {
+  background-color: #29313db3;
+}
+
+.pagina {
+  padding: 128px 50px 0 50px;
+  width: 100%;
+}
+
+.pagina .titulo {
+  font-size: 28px;
+  text-transform: uppercase;
+  font-weight: 600;
+  letter-spacing: 4px;
+}
+
+.receita .ingredientes .titulo,
+.receita .modo-de-preparo .titulo {
+  font-size: 16px;
+  margin-top: 20px;
+}
+
+.destaque {
+  padding: 20px;
+  background-color: #ddd;
+  margin-top: 10px;
+  line-height: 22px;
+  white-space: pre;
+  border-radius: 5px;
+}
+
+.entrada {
+  display: flex;
+  flex-direction: column;
+}
+
+.entrada .label {
+  text-transform: uppercase;
+  letter-spacing: 4px;
+  font-size: 16px;
+  font-weight: 600;
+  margin-top: 20px;
+  margin-bottom: 4px;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.entrada input,
+.entrada textarea,
+.entrada select {
+  padding: 12px;
+  border: 1px solid #bbb;
+  border-radius: 4px;
+  background-color: #fff;
+}
+
+.entrada textarea {
+  resize: 0;
+  min-height: 150px;
+}
+
+.btns-editar {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+
+  gap: 1rem;
+}
+
+.salvar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 44px;
+  font-size: 18px;
+  border: none;
+  border-radius: 4px;
+  margin-top: 10px;
+  background-color: rgba(64, 161, 119, 0.9);
+  color: #fff;
+  cursor: pointer;
+}
+
+.cancelar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 44px;
+  font-size: 18px;
+  border: none;
+  border-radius: 4px;
+  margin-top: 10px;
+  background-color: #a14040e6;
+  color: #fff;
+  cursor: pointer;
+}
+
+.adicionar-receita button ion-icon {
+  margin-right: 5px;
+}
+
+.adicionar-receita button:hover {
+  background-color: #40a177cc;
+}
+
+.contador {
+  display: flex;
+  justify-content: center;
+
+  margin-top: 1rem;
+}
+
+.add-categoria {
+  background-color: #40a177cc;
+  border-radius: 50%;
+  padding: 0.2rem;
+  cursor: pointer;
+  transition: 1s;
+}
+
+.add-categoria:hover {
+  background-color: green;
+}
+
+.signin-signup {
+  background-color: #29313d;
+  width: 100vw;
+  height: 100vh;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.card {
+  background-color: #ddd;
+  width: 1000px;
+  height: 500px;
+  border-radius: 1rem;
+
+  display: flex;
+}
+
+.signup {
+  background-color: #40a177cc;
+  width: 50%;
+  height: 100%;
+  border-radius: 1rem 0 0 1rem;
+
+  padding: 2.5rem;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.signin-signup h3 {
+  text-align: center;
+  font-size: 2rem;
+  font-family: Arial, Helvetica, sans-serif;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+.signin-signup button {
+  background-color: #29313d;
+  margin-top: 1rem;
+}
+
+.signin {
+  background-color: #bbb;
+  width: 50%;
+  height: 100%;
+  border-radius: 0 1rem 1rem 0;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  padding: 2.5rem;
+}
+
+.autor {
+  padding-top: 1rem;
+  font-style: italic;
+  color: rgb(64, 64, 64);
+}
+
+.usuario-logado {
+  text-align: center;
+  margin-bottom: 1.5rem;
+  font-size: 1.5rem;
+}
+
+.views {
+  padding-top: 1rem;
+  font-style: italic;
+}
+
+.escondido {
+  display: none;
+}
