@@ -1,10 +1,13 @@
-import { useState } from "react"
+import { useState, useContext } from "react"
 import { useNavigate } from "react-router-dom"
+import axios from "axios"
+import AuthContext from "../contexts/AuthContext"
 
 export default function SignPage() {
   const navigate = useNavigate()
   const [formCadastro, setFormCadastro] = useState({ nome: "", email: "", senha: "" })
   const [formLogin, setFormLogin] = useState({ email: "", senha: "" })
+  const { setToken } = useContext(AuthContext)
 
   function handleFormCadastro(e) {
     const { name, value } = e.target
@@ -18,14 +21,25 @@ export default function SignPage() {
 
   function criarConta(e) {
     e.preventDefault()
-    console.log(formCadastro)
-    // TODO
+    
+    axios.post(`${import.meta.env.VITE_API_URL}/sign-up`, formCadastro)
+    .then(res => {
+      alert("Cadastro criado!")
+      setFormCadastro({ nome: "", email: "", senha: "" })
+    })
+    .catch(err => alert(err.response))
   }
 
   function fazerLogin(e) {
     e.preventDefault()
-    console.log(formLogin)
-    // TODO
+    
+    axios.post(`${import.meta.env.VITE_API_URL}/sign-in`, formLogin)
+    .then(res => {
+      setToken(res.data)
+      localStorage.setItem("token", res.data)
+      navigate("/add")
+    })
+    .catch(err => alert(err.response))
   }
 
   return (
@@ -41,6 +55,7 @@ export default function SignPage() {
               name="nome"
               value={formCadastro.nome}
               onChange={handleFormCadastro}
+              required
             />
           </div>
           <div className="entrada">

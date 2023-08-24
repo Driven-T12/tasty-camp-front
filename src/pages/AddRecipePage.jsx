@@ -1,9 +1,19 @@
 import Sidebar from "../components/Sidebar"
 import LogoutButton from "../components/LogoutButton"
-import { useState } from "react"
+import { useState, useEffect, useContext } from "react"
+import AuthContext from "../contexts/AuthContext"
+import { useNavigate } from "react-router-dom"
 
 export default function AddRecipePage() {
   const [form, setForm] = useState({ titulo: "", ingredientes: "", preparo: "" })
+  const {token} = useContext(AuthContext)
+  const navigate = useNavigate()
+
+  useEffect(() => {
+    if (!token) {
+      navigate("/")
+    }
+  }, [])
 
   function handleForm(e) {
     const { name, value } = e.target

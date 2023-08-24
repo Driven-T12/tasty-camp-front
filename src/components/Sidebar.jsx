@@ -1,12 +1,23 @@
-import { useEffect, useState } from "react"
+import { useEffect, useState, useContext } from "react"
 import { useNavigate } from "react-router-dom"
+import axios from "axios"
+import AuthContext from "../contexts/AuthContext"
 
 export default function Sidebar() {
-    const [receitas, setReceitas] = useState([{ id: 1, titulo: "Pão com ovo", ingredientes: "Pão e ovo", preparo: "Faça o pão e o ovo" }])
+    const [receitas, setReceitas] = useState([])
     const navigate = useNavigate()
+    const {token} = useContext(AuthContext)
 
     useEffect(() => {
-        // TODO
+        const config = {
+            headers: {
+                Authorization: `Bearer ${token}`
+            }
+        }
+
+        axios.get(`${import.meta.env.VITE_API_URL}/receitas`, config)
+        .then(res => setReceitas(res.data))
+        .catch(err => console.log(err.response))
     }, [])
 
     return (
